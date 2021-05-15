@@ -14,8 +14,7 @@ module.exports = {
         primary: colors.green,
       },
       fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+        body: ['nunito', 'mono']
       },
     },
     variants: {
