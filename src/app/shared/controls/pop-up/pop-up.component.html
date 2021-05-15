@@ -1,0 +1,10 @@
+<div class="flex justify-between">
+<h2 mat-dialog-title>{{title}}</h2>
+    <span class="material-icons cursor-pointer text-red-500" [mat-dialog-close]="true" (click)="confirm()">
+      cancel
+      </span>
+</div>
+<mat-dialog-content>
+    <ng-template [cdkPortalOutlet]="portal"></ng-template>
+</mat-dialog-content>
+

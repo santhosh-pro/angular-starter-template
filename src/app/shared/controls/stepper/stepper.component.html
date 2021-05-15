@@ -1,0 +1,10 @@
+<ng-container *ngIf="orientation === 'horizontal'; else vertical">
+    <mat-horizontal-stepper>
+      <ng-content></ng-content>
+    </mat-horizontal-stepper>
+  </ng-container>
+  <ng-template #vertical>
+    <mat-vertical-stepper>
+      <ng-content></ng-content>
+    </mat-vertical-stepper>
+  </ng-template>
