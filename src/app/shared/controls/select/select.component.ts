@@ -17,6 +17,7 @@ import { SelectOption } from './select-option';
 export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
   @Input() isFullWidth: boolean = true;
+  @Input() defaultSelect: string = '';
   @Input() isDisabled: boolean = false;
   @Input() isMultiple: boolean = false;
   @Input() display: string = '';
@@ -24,6 +25,7 @@ export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor 
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() items: any = [];
+  @Input() inputType: String = 'object';
   
   @Output() changeValue: EventEmitter<any> = new EventEmitter<any>();
 
@@ -33,7 +35,9 @@ export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor 
   onTouched: any = () => { };
 
   protected _onDestroy = new Subject<void>();
-  constructor() { }
+  constructor() { 
+    
+  }
 
   inputChange() {
     this.changeValue.emit(this.form.value);
@@ -41,6 +45,7 @@ export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor 
   }
 
   ngOnInit(): void {
+    this.form.setValue(this.defaultSelect);
     this.form.valueChanges.subscribe((res:any)=>{
       this.onChange(res);
     })

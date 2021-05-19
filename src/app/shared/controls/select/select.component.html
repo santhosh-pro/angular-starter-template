@@ -1,4 +1,4 @@
-<div *ngIf="isMultiple">
+<div *ngIf="isMultiple && inputType ==='object'">
 <mat-form-field>
   <mat-label *ngIf="label">{{label}}</mat-label>
   <mat-select [placeholder]="placeholder" [formControl]="form" [disabled]="isDisabled"
@@ -9,7 +9,7 @@
   </mat-select>
 </mat-form-field>
 </div>
-<div *ngIf="!isMultiple">
+<div *ngIf="!isMultiple && inputType ==='object'">
   <mat-form-field>
     <mat-label *ngIf="label">{{label}}</mat-label>
     <mat-select [placeholder]="placeholder" [formControl]="form" [disabled]="isDisabled"
@@ -20,3 +20,16 @@
     </mat-select>
   </mat-form-field>
   </div>
+
+
+  <div *ngIf="inputType ==='string' && !isMultiple">
+    <mat-form-field class="w-20">
+      <mat-label *ngIf="label">{{label}}</mat-label>
+      <mat-select [placeholder]="placeholder" [formControl]="form" [disabled]="isDisabled"
+        (selectionChange)="inputChange()">
+        <mat-option *ngFor="let item of items" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>

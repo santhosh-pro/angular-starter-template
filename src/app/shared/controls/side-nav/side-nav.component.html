@@ -1,52 +1,60 @@
-<mat-toolbar class="bg-primary-300">
-    <mat-toolbar-row>
-     
-     
-      
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon >menu</mat-icon>
+<mat-toolbar class="bg-primary-500">
+  <div class="flex justify-between w-full text-primary-50">
+    <div class="flex flex-row items-center">
+      <button  mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
       </button>
-      <span class="menu-spacer"></span>
-      <h1>{{title}}</h1>
-      
-    </mat-toolbar-row>
-    <!-- <mat-toolbar-row>
-      <button mat-icon-button>
-        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-      </button>
-      <h1>SimpleCRM</h1>
-      <span class="menu-spacer"></span>
-      <div>
-        <a mat-button > Accounts </a>
-        <a mat-button > Create Account </a>
-        <a mat-button > Contacts </a>
-        <a mat-button > Create Contact </a>
-        <a mat-button > Activities </a>
-        <a mat-button > Create Activity </a>
-  
-      </div>
-    </mat-toolbar-row> -->
-  </mat-toolbar>
-  
-<mat-sidenav-container [hasBackdrop]="false">
-    <mat-sidenav #sidenav class="sidenav" [mode]="'side'" opened>
-      <mat-nav-list *ngFor="let item of items">
-        <a mat-list-item *ngIf="!item.children" (click)="nav(item)"> {{item.name}} </a>
-        <mat-expansion-panel *ngIf="item.children" [class.mat-elevation-z0]="true" dense>
-          <mat-expansion-panel-header>
-              {{item.name}}
-          </mat-expansion-panel-header>
-          <mat-nav-list dense *ngFor="let subItem of item.children" >
-              <a mat-list-item (click)="nav(subItem)"><mat-icon>attach_money</mat-icon>{{subItem.name}}</a>
-          </mat-nav-list>
-      </mat-expansion-panel>
-      </mat-nav-list>
 
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div style="height: 88vh;">
-  
-       <ng-content></ng-content>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+      <h1>{{ title }}</h1>
+    </div>
+    <div class="flex flex-row items-center space-x-3">
+      <span  class="material-icons">
+        language
+        </span>
+      <app-select
+      [defaultSelect]="'en'"
+      [inputType]="'string'"
+      [items]="languages"
+      [value]="''"
+      [display]="''"
+      (changeValue)="changeLanguage($event)"
+    ></app-select>
+    <span [matMenuTriggerFor]="menu" class="material-icons cursor-pointer">
+      account_circle
+      </span>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container [hasBackdrop]="false">
+  <mat-sidenav #sidenav class="sidenav" [mode]="'side'" opened>
+    <mat-nav-list *ngFor="let item of items">
+      <a mat-list-item *ngIf="!item.children" (click)="nav(item)">
+        {{ item.name }}
+      </a>
+      <mat-expansion-panel
+        *ngIf="item.children"
+        [class.mat-elevation-z0]="true"
+        dense
+      >
+        <mat-expansion-panel-header>
+          {{ item.name }}
+        </mat-expansion-panel-header>
+        <mat-nav-list dense *ngFor="let subItem of item.children">
+          <a mat-list-item (click)="nav(subItem)"
+            ><mat-icon>attach_money</mat-icon>{{ subItem.name }}</a
+          >
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

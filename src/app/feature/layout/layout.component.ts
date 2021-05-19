@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { SideNavOption } from 'src/app/shared/controls/side-nav/side-nav-option';
 
 @Component({
@@ -10,26 +11,26 @@ import { SideNavOption } from 'src/app/shared/controls/side-nav/side-nav-option'
 export class LayoutComponent implements OnInit {
   menu: SideNavOption[] = [
     {
-      name: 'Dashboard',
+      name: this.translate.instant('MENU.DASHBOARD'),
       route: '/dashboard',
     },
     {
-      name: 'Menu 2',
+      name: this.translate.instant('MENU.MENU1'),
       route: '/',
       children: [
         {
-          name: 'Child Menu 2',
+          name: this.translate.instant('MENU.MENU2'),
           route: '/',
         },
       ],
     },
     {
-      name: 'Menu 3',
+      name: this.translate.instant('MENU.CHILDMENU1'),
       route: '/',
     },
   ];
 
-  constructor() {}
+  constructor(private translate: TranslateService) {}
 
   ngOnInit(): void {}
 }

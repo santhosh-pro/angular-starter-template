@@ -1,0 +1,12 @@
+{
+    "HOME": {
+      "TITLE": "Angular Starter",
+      "SELECT": "Change language"
+    },
+    "MENU":{
+      "DASHBOARD":"Dashboard",
+      "MENU1":"MEnu 1",
+      "MENU2":"Menu 2",
+      "CHILDMENU1":"Child Menu 1"
+    }
+  }

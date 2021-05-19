@@ -11,14 +11,16 @@ module.exports = {
     theme: {
       extend: {},
       colors: {
-        primary: colors.green,
+        primary: colors.orange,
       },
       fontFamily: {
         body: ['nunito', 'mono']
       },
     },
     variants: {
-      extend: {},
+      extend: {
+        textColor: ['active'],
+      },
     },
     plugins: [],
 };
