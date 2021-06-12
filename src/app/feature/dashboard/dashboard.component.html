@@ -1,1 +1,54 @@
-<p>dashboard works!</p>
+<p>Examples</p>
+
+
+<form [formGroup]="form">
+
+    <app-text-input placeholder='Username' formControlName="username"></app-text-input>
+    <app-password-input placeholder='Password' formControlName="password"></app-password-input>
+  
+    <app-button (click)="signIn()" name='Sign In'></app-button>
+  
+    <app-expandable title="Welcome" description="This is test">
+      <div>
+        <h1>
+          Hello app-expandable
+        </h1>
+      </div>
+    </app-expandable>
+  
+    <app-check-box label='Is Working'></app-check-box>
+    <app-switch label='Slide me'></app-switch>
+  
+    <app-select formControlName="username" [display]="'title'" [value]="'id'" label='User' [items]="items" [isMultiple]="true"></app-select>
+  
+    <app-radio-group label='Select a Option' [items]="items" [display]="'title'" [value]="'id'"  formControlName="username">
+    </app-radio-group>
+  
+    <app-slider label="Slider 1"></app-slider>
+  
+    <app-table [tableColumns]="carsColumns" [tableData]="carsRows" [isPageable]="true" [isSortable]="true"
+      [paginationSizes]="[2,4,6,10]" [defaultPageSize]="10" (sort)="sortData($event)" (onPageChange)="page($event)"></app-table>
+  
+    <app-stepper orientation='vertical'>
+      <div>
+        <h1>
+          Hello 1
+        </h1>
+      </div>
+      <div>
+        <h1>
+          Hello 1
+        </h1>
+      </div>
+      <!-- <app-step label="Step 1">
+      
+      </app-step>
+      <app-step label="Step 2">
+        <div>
+        <h1>
+          Hello 2
+        </h1>
+      </div>
+      </app-step> -->
+    </app-stepper>
+  </form>
